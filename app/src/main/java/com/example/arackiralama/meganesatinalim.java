@@ -14,7 +14,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class meganesatinalim extends AppCompatActivity {
     public static boolean visibellel4;
@@ -75,6 +83,29 @@ public class meganesatinalim extends AppCompatActivity {
 
         // Seçili tarihler bugünden ilerideyse MovementActivity'e geçiş yap
         if (selectedDate1.after(today) || selectedDate2.after(today)) {
+
+            // Firestore bağlantısını oluştur
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            // Firebase Authentication ile kullanıcı bilgilerini al
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            String uid = currentUser.getUid();
+
+            // Firestore'a kiralama bilgilerini ekleme
+            Map<String, Object> kiralamaBilgileri = new HashMap<>();
+            kiralamaBilgileri.put("Araç Model", "Rnault Megane"); // Burada aracın kimliğini eklemelisiniz
+            kiralamaBilgileri.put("kiralama_baslangic_tarihi", selectedDate1.getTime());
+            kiralamaBilgileri.put("kiralama_bitis_tarihi", selectedDate2.getTime());
+
+            db.collection("Kullanıcılar.").document(uid).collection("Kiralananlar")
+                    .add(kiralamaBilgileri)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(meganesatinalim.this,"Kiralama bilgileri başarıyla eklendi:"+documentReference.getId(),Toast.LENGTH_SHORT).show();
+                        }
+                    });
             // AlertDialog oluştur
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Renault Megane aracı başarıyla kiralandı")
