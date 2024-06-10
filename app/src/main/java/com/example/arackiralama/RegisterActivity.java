@@ -33,9 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference mReference;
     private HashMap<String,Object> mData;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

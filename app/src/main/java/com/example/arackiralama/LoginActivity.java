@@ -75,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(AuthResult authResult) {
                             mUser=mAuth.getCurrentUser();
-
                             mReferance=FirebaseDatabase.getInstance().getReference("Kullanıcılar").child(mUser.getUid());
                             mReferance.addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -86,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                                     }
 
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                     Toast.makeText(LoginActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();

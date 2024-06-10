@@ -87,7 +87,8 @@ import java.util.List;
                 public void onItemClick(int position) {
                     CarModel.Car clickedCar = adapter.getCars().get(position);
 
-                    if(clickedCar.getBrand().equals("Hyundai") && clickedCar.getModel().equals("i20") && clickedCar.getYear().equals("2022") && clickedCar.getColor().equals("Fume")){
+                    if(clickedCar.getBrand().equals("Hyundai") && clickedCar.getModel().equals("i20")
+                            && clickedCar.getYear().equals("2022") && clickedCar.getColor().equals("Fume")){
                         Intent intent=new Intent(MainActivity.this, hyundaii20.class);
                         startActivity(intent);
                     } else if (clickedCar.getBrand().equals("Fiat") && clickedCar.getModel().equals("Egea") && clickedCar.getYear().equals("2022") && clickedCar.getColor().equals("Beyaz")){
@@ -134,34 +135,6 @@ import java.util.List;
             carModel.add("Bmw","216d","2020","Mavi");
             carModel.add("Mercedes","EQE","2022","Gri");
 
-
-
-        try{
-                SQLiteDatabase database=this.openOrCreateDatabase("Araclar",MODE_PRIVATE,null);
-                database.execSQL("CREATE TABLE IF NOT EXISTS araclar(id INTEGER PRIMARY KEY,resim_yolu TEXT,marka VARCHAR,model VARCHAR,sınıf VARCHAR,yakıt VARCHAR,renk VARCHAR,vites VARCHAR,tarih VARCHAR)");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/hyundaii20son.jpg','Hyundai','i20','Ekonomik','Benzin','Füme','Otomatik','2022')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/fiategeason.jpg','Fiat','Egea','Ekonomik','Dizel','Beyaz','Manuel','2022')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/toyotacorollason.jpg','Toyota','Corolla','Orta','Benzin','Mavi','Otomatik','2023')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/renaultmeganeson.jpg','Renault','Megane','Orta','Benzin','Lacivert','Otomatik','2020')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/opelastrason.jpg','Opel','Astra','Orta','Benzin','Beyaz','Otomatik','2012')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/skodascalason.jpg','Scoda','Scala','Orta','Dizel','Beyaz','Otomatik','2020')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/fordfocusson.jpg','Ford','Focus','Orta','Benzin','Mavi','Manuel','2023')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/toyotachrson.jpg','Toyota','C-HR','SUV','Hybrid','Gri','Otomatik','2017')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/bmw216dson.jpg','Bmw','216d grand coupe','Üst','Dizel','Mavi','Otomatik','2020')");
-                database.execSQL("INSERT INTO araclar(marka,model,sınıf,yakıt,renk,vites,tarih) VALUES('/path/to/mercedeseqeson.jpg','Mercedes','Eqe 350 amg','Üst','Elektrik','Gri','Otomatik','2022')");
-
-
-
-
-
-
-
-
-
-
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
 
 
 
