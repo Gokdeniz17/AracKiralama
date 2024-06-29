@@ -94,7 +94,7 @@ public class meganesatinalim extends AppCompatActivity {
 
             // Firestore'a kiralama bilgilerini ekleme
             Map<String, Object> kiralamaBilgileri = new HashMap<>();
-            kiralamaBilgileri.put("Araç Model", "Rnault Megane"); // Burada aracın kimliğini eklemelisiniz
+            kiralamaBilgileri.put("Araç Model", "Renault Megane"); // Burada aracın kimliğini eklemelisiniz
             kiralamaBilgileri.put("kiralama_baslangic_tarihi", selectedDate1.getTime());
             kiralamaBilgileri.put("kiralama_bitis_tarihi", selectedDate2.getTime());
 
